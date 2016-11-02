@@ -6,6 +6,12 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface EventHandler<T> {
 
+	static <T> EventHandler<T> ignoreUnhandled() {
+		return (t, e) -> {
+			return t;
+		};
+	}
+	
 	static <T> EventHandler<T> unhandled() {
 		return (t, e) -> {
 			throw new IllegalArgumentException("event " + e + " does not apply to " + t);
@@ -28,4 +34,5 @@ public interface EventHandler<T> {
 			}
 		};
 	}
+
 }

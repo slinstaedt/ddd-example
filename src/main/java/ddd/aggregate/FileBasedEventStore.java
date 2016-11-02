@@ -120,8 +120,8 @@ public class FileBasedEventStore implements EventStore {
 
 		@Override
 		public Stream<AggregateLog<E>> logs() {
-			return StreamSupport.stream(logs.spliterator(), false)
-					.map(f -> new FileAggregateLog(Identifier.<E>fromValue(logs.getFileName().toString(), f.getFileName().toString())));
+			return Stream.of(logs.toFile().listFiles())
+					.map(f -> new FileAggregateLog(Identifier.<E>fromValue(logs.getFileName().toString(), f.getName())));
 		}
 	}
 

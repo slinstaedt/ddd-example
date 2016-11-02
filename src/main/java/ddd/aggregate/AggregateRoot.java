@@ -31,6 +31,10 @@ public class AggregateRoot<T, E> {
 		this.changes = new ArrayList<>();
 		this.state = state;
 	}
+	
+	protected void setState(T state) {
+		this.state = state;
+	}
 
 	public AggregateRoot<T, E> perform(Function<? super T, ? extends E> command) {
 		return record(command.apply(state));
