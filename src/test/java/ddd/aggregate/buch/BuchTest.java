@@ -65,6 +65,7 @@ public class BuchTest {
 		buch.testChangesContain(new BuchZurückGegeben(rückgabeDatum));
 	}
 	
+	
 	@Test
 	public void buchWirdImBestandAufgenommen() {
 		// given
